@@ -1,0 +1,129 @@
+`timescale 1ns / 1ps
+ 
+module UART_TX
+  #(parameter CLKS_PER_BIT = 10415) // clock per bit = clock frequency / baud rate (i.e 100MHz/ 9600)
+  (
+   input       i_Rst_L, //Reset
+   input       i_Clock, //FPGA clock (frequency is 100MHZ)
+   input       i_TX_DV, //transmit (data is transmitted when this sweitch is turned on)
+   input [7:0] i_TX_Byte, //input ascii value of 8 bits
+   output reg  o_TX_Active, //
+   output reg  o_TX_Serial, //Serial signal which is transmitted
+   output reg  o_TX_Done
+   );
+ 
+ //state encodings
+  localparam IDLE         = 2'b00;
+  localparam TX_START_BIT = 2'b01;
+  localparam TX_DATA_BITS = 2'b10;
+  localparam TX_STOP_BIT  = 2'b11;
+ 
+ 
+  reg [2:0] r_SM_Main;  //state
+  reg [$clog2(CLKS_PER_BIT):0] r_Clock_Count;   //counter to keep track of clock cycles (sample counter)
+  reg [2:0] r_Bit_Index;    //counter to keep track of bits of data(bit counter)
+  reg [7:0] r_TX_Data;  //shift register
+
+
+  // Purpose: Control TX state machine
+  always @(posedge i_Clock or negedge i_Rst_L)
+  begin
+    if (~i_Rst_L)   //when reset button is low
+    begin
+      r_SM_Main <= 3'b000;  //set r_SM_Main to zero i.e idle
+    end
+    else
+    begin
+
+      o_TX_Done <= 1'b0;
+
+      case (r_SM_Main)
+      IDLE :
+        begin
+          o_TX_Serial   <= 1'b1;    // Drive Line High for Idle
+          r_Clock_Count <= 0;       //sample counter is zero in idle state i.e no sample taken
+          r_Bit_Index   <= 0;       //bit counter is zero
+         
+          if (i_TX_DV == 1'b1)      //transmit switch is turned on
+          begin
+            o_TX_Active <= 1'b1;    
+            r_TX_Data   <= i_TX_Byte;   //load input data
+            r_SM_Main   <= TX_START_BIT;    //go to start state
+          end
+          else
+            r_SM_Main <= IDLE;  //if transmit is not on, remain idle
+        end //case: IDLE
+     
+     
+      TX_START_BIT :
+        begin
+          o_TX_Serial <= 1'b0;  // Send out Start Bit. Start bit = 0
+         
+          if (r_Clock_Count < CLKS_PER_BIT-1)   // Wait CLKS_PER_BIT-1 clock cycles for start bit to finish to take next sample (next bit)
+          begin
+            r_Clock_Count <= r_Clock_Count + 1;     //increment clock count
+            r_SM_Main     <= TX_START_BIT;      //remain in start state
+          end
+          else      //take next bit/sample
+          begin
+            r_Clock_Count <= 0;     //set clock to zero
+            r_SM_Main     <= TX_DATA_BITS;  //go to data bit state to load data
+          end
+        end // case: TX_START_BIT
+     
+         
+      TX_DATA_BITS :
+        begin
+          o_TX_Serial <= r_TX_Data[r_Bit_Index];    //send data bit by bit
+         
+          if (r_Clock_Count < CLKS_PER_BIT-1)   // Wait CLKS_PER_BIT-1 clock cycles for data bits to finish    
+          begin
+            r_Clock_Count <= r_Clock_Count + 1;  //increment clock count by 1
+            r_SM_Main     <= TX_DATA_BITS;  //remain in data bits state
+          end
+          else      //next bit
+          begin
+            r_Clock_Count <= 0;     //set clock count to zero
+           
+            if (r_Bit_Index < 7)    // Check if we have sent out all bits
+            begin
+              r_Bit_Index <= r_Bit_Index + 1;   //increment bit index
+              r_SM_Main   <= TX_DATA_BITS;      //remain in data bit state
+            end
+            else    //all bits are sent (1 byte of data sent)
+            begin
+              r_Bit_Index <= 0;     //set bit index to zero
+              r_SM_Main   <= TX_STOP_BIT;   //go to stop state
+            end
+          end
+        end // case: TX_DATA_BITS
+     
+     
+      // Send out Stop bit.  Stop bit = 1
+      TX_STOP_BIT :
+        begin
+          o_TX_Serial <= 1'b1;     // Drive Line High
+         
+          if (r_Clock_Count < CLKS_PER_BIT-1)  // Wait CLKS_PER_BIT-1 clock cycles for Stop bit to finish
+          begin
+            r_Clock_Count <= r_Clock_Count + 1; //increment clock
+            r_SM_Main     <= TX_STOP_BIT;   //remain in stop state
+          end
+          else
+          begin
+            o_TX_Done     <= 1'b1;  
+            r_Clock_Count <= 0; //set clock count to zero
+            r_SM_Main     <= IDLE;  //go to idle state
+            o_TX_Active   <= 1'b0;
+          end
+        end // case: TX_STOP_BIT      
+     
+      default :
+        r_SM_Main <= IDLE;
+     
+    endcase
+    end // else: !if(~i_Rst_L)
+  end // always @ (posedge i_Clock or negedge i_Rst_L)
+
+ 
+endmodule
