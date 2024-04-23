@@ -1,0 +1,70 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 21.04.2024 01:02:57
+// Design Name: 
+// Module Name: bram_tb
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module bram_tb();
+
+  // Define signals
+  reg [14:0] addr;
+  reg clk;
+  reg [7:0] din;
+  wire [7:0] output0;
+  reg we;
+
+  // Instantiate design_1_wrapper
+  design_1_wrapper uut (
+    .BRAM_PORTA_0_addr(addr),
+    .BRAM_PORTA_0_clk(clk),
+    .BRAM_PORTA_0_din(din),
+    .BRAM_PORTA_0_dout(output0),
+    .BRAM_PORTA_0_we(we)
+  );
+
+  // Generate clock
+ initial 
+ begin
+    clk = 0;
+  forever #5 clk = ~clk;
+  end
+
+  // Testbench code to store values 1 to 10 in the BRAM
+  initial 
+  begin
+    we = 1'b0; 
+//    addr = 12'd5; // Start address
+//    #10
+    addr = 0; // Start address
+    #10
+    addr = 321; // Start address
+    #10    
+     addr = 322; // Start address
+    #10 
+     addr = 323; // Start address
+    #10 
+     addr = 324; // Start address
+    #10 
+    addr=523;
+    #10
+     addr = 324; // Start address
+    #10 
+    $finish;
+  end
+endmodule

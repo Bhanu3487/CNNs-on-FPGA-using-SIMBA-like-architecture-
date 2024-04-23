@@ -1,0 +1,48 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 21.04.2024 19:01:02
+// Design Name: 
+// Module Name: top_module_tb
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module top_module_tb();
+reg clk;
+reg rst; reg we;
+
+
+
+top_module uut(.clk(clk),.rst(rst));
+
+initial 
+ begin
+    clk = 0;
+  forever #5 clk = ~clk;
+ end
+  
+initial
+begin
+rst=1;
+#10;
+we=1;
+rst=0;
+#400
+we=0;
+#10
+$finish;
+end
+endmodule

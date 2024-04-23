@@ -1,0 +1,80 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 21.04.2024 18:37:31
+// Design Name: 
+// Module Name: global_pe_tb
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module global_pe_tb();
+    reg clk;
+    reg rst; reg pixel;
+    reg [7:0] img1;   
+    reg [7:0] img2;
+    reg [7:0] img3;
+    reg [7:0] img4;
+    reg [7:0] img5;
+    reg [7:0] img6;
+    reg [7:0] img7;
+    reg [7:0] img8;
+    reg [7:0] img9;
+    reg we; wire [7:0]out0;wire [7:0]out1;wire [7:0]out2;
+   
+    
+global_pe uut(.clk(clk),
+     .rst(rst),.pixel(pixel),
+    .img1(img1),   // Vector  A (9-bit) with 9 elements
+      .img2(img2),
+      .img3(img3),
+      .img4(img4),
+      .img5(img5),
+      .img6(img6),
+      .img7(img7),
+      .img8(img8),
+      .img9(img9),.we(we),.out0(out0),.out1(out1),.out2(out2));
+initial 
+ begin
+    clk = 0;
+
+  forever #5 clk = ~clk;
+
+  end
+  
+initial
+begin
+rst=1;
+#10;
+we=1;
+rst=0;
+pixel=0;
+img1=8'd100;
+img2=8'd100;
+img3=8'd100;
+img4=8'd100;
+img5=8'd100;
+img6=8'd100;
+img7=8'd100;
+img8=8'd100;
+img9=8'd100;
+#100
+#10
+#10
+we=0;
+#30
+$finish;
+end 
+endmodule

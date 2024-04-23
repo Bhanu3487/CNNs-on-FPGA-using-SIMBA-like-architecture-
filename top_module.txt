@@ -1,0 +1,97 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 22.04.2024 18:39:23
+// Design Name: 
+// Module Name: top_module
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module top_module(
+input clk,
+input rst,input we
+    );
+    
+wire [7:0]img[783:0];
+genvar i;
+generate
+    for (i = 320; i < 1104; i = i + 1) begin : img_inst
+        design_1_wrapper pqr (
+            .BRAM_PORTA_0_addr(i),
+            .BRAM_PORTA_0_clk(clk), // 'din' needs to be defined
+            .BRAM_PORTA_0_dout(img[i-320]),
+            .BRAM_PORTA_0_we(1'b0)
+        );
+    end
+endgenerate
+
+wire [7:0] wt [287:0];
+wire [7:0] bias [31:0];
+
+genvar weight;
+generate
+    for (weight = 0; weight < 288; weight = weight + 1) begin : bram_instances
+        design_1_wrapper pqr (
+            .BRAM_PORTA_0_addr(weight),
+            .BRAM_PORTA_0_clk(clk), // 'din' needs to be defined
+            .BRAM_PORTA_0_dout(wt[weight]),
+            .BRAM_PORTA_0_we(1'b0)
+        );
+    end
+endgenerate
+
+genvar j;
+generate
+    for (j = 288; j < 320; j = j + 1) begin : bram_bias_instances
+        design_1_wrapper pqrst (
+            .BRAM_PORTA_0_addr(j),
+            .BRAM_PORTA_0_clk(clk), // 'din' needs to be defined
+            .BRAM_PORTA_0_dout(bias[j-288]),
+            .BRAM_PORTA_0_we(1'b0)
+        );
+    end
+endgenerate
+
+wire [7:0]result[21631:0];
+wire din;
+
+genvar col;
+genvar row;
+generate
+for (row = 0; row < 26; row = row + 1)begin
+    for (col = 0; col < 26; col = col + 1) 
+      begin : global_pe_inst
+        global_pe lmn(.clk(clk),.we(we),
+       .rst(rst),.pixel(col+26*row),
+      .img1(img[col+(row*28)]),   // Vector  A (9-bit) with 9 elements
+      .img2(img[col+(row*28)+1]),
+      .img3(img[col+(row*28)+2]),
+      .img4(img[col+(row*28)+28]),
+      .img5(img[col+(row*28)+29]),
+      .img6(img[col+(row*28)+30]),
+      .img7(img[col+(row*28)+56]),
+      .img8(img[col+(row*28)+57]),
+      .img9(img[col+(row*28)+58]),
+      .wt0(wt[0]), .wt1(wt[1]), .wt2(wt[2]), .wt3(wt[3]), .wt4(wt[4]), .wt5(wt[5]), .wt6(wt[6]), .wt7(wt[7]), .wt8(wt[8]), .wt9(wt[9]), .wt10(wt[10]), .wt11(wt[11]), .wt12(wt[12]), .wt13(wt[13]), .wt14(wt[14]), .wt15(wt[15]), .wt16(wt[16]), .wt17(wt[17]), .wt18(wt[18]), .wt19(wt[19]), .wt20(wt[20]), .wt21(wt[21]), .wt22(wt[22]), .wt23(wt[23]), .wt24(wt[24]), .wt25(wt[25]), .wt26(wt[26]), .wt27(wt[27]), .wt28(wt[28]), .wt29(wt[29]), .wt30(wt[30]), .wt31(wt[31]), .wt32(wt[32]), .wt33(wt[33]), .wt34(wt[34]), .wt35(wt[35]), .wt36(wt[36]), .wt37(wt[37]), .wt38(wt[38]), .wt39(wt[39]), .wt40(wt[40]), .wt41(wt[41]), .wt42(wt[42]), .wt43(wt[43]), .wt44(wt[44]), .wt45(wt[45]), .wt46(wt[46]), .wt47(wt[47]), .wt48(wt[48]), .wt49(wt[49]), .wt50(wt[50]), .wt51(wt[51]), .wt52(wt[52]), .wt53(wt[53]), .wt54(wt[54]), .wt55(wt[55]), .wt56(wt[56]), .wt57(wt[57]), .wt58(wt[58]), .wt59(wt[59]), .wt60(wt[60]), .wt61(wt[61]), .wt62(wt[62]), .wt63(wt[63]), .wt64(wt[64]), .wt65(wt[65]), .wt66(wt[66]), .wt67(wt[67]), .wt68(wt[68]), .wt69(wt[69]), .wt70(wt[70]), .wt71(wt[71]), .wt72(wt[72]), .wt73(wt[73]), .wt74(wt[74]), .wt75(wt[75]), .wt76(wt[76]), .wt77(wt[77]), .wt78(wt[78]), .wt79(wt[79]), .wt80(wt[80]), .wt81(wt[81]), .wt82(wt[82]), .wt83(wt[83]), .wt84(wt[84]), .wt85(wt[85]), .wt86(wt[86]), .wt87(wt[87]), .wt88(wt[88]), .wt89(wt[89]), .wt90(wt[90]), .wt91(wt[91]), .wt92(wt[92]), .wt93(wt[93]), .wt94(wt[94]), .wt95(wt[95]), .wt96(wt[96]), .wt97(wt[97]), .wt98(wt[98]), .wt99(wt[99]), .wt100(wt[100]), .wt101(wt[101]), .wt102(wt[102]), .wt103(wt[103]), .wt104(wt[104]), .wt105(wt[105]), .wt106(wt[106]), .wt107(wt[107]), .wt108(wt[108]), .wt109(wt[109]), .wt110(wt[110]), .wt111(wt[111]), .wt112(wt[112]), .wt113(wt[113]), .wt114(wt[114]), .wt115(wt[115]), .wt116(wt[116]), .wt117(wt[117]), .wt118(wt[118]), .wt119(wt[119]), .wt120(wt[120]), .wt121(wt[121]), .wt122(wt[122]), .wt123(wt[123]), .wt124(wt[124]), .wt125(wt[125]), .wt126(wt[126]), .wt127(wt[127]), .wt128(wt[128]), .wt129(wt[129]), .wt130(wt[130]), .wt131(wt[131]), .wt132(wt[132]), .wt133(wt[133]), .wt134(wt[134]), .wt135(wt[135]), .wt136(wt[136]), .wt137(wt[137]), .wt138(wt[138]), .wt139(wt[139]), .wt140(wt[140]), .wt141(wt[141]), .wt142(wt[142]), .wt143(wt[143]), .wt144(wt[144]), .wt145(wt[145]), .wt146(wt[146]), .wt147(wt[147]), .wt148(wt[148]), .wt149(wt[149]), .wt150(wt[150]), .wt151(wt[151]), .wt152(wt[152]), .wt153(wt[153]), .wt154(wt[154]), .wt155(wt[155]), .wt156(wt[156]), .wt157(wt[157]), .wt158(wt[158]), .wt159(wt[159]), .wt160(wt[160]), .wt161(wt[161]), .wt162(wt[162]), .wt163(wt[163]), .wt164(wt[164]), .wt165(wt[165]), .wt166(wt[166]), .wt167(wt[167]), .wt168(wt[168]), .wt169(wt[169]), .wt170(wt[170]), .wt171(wt[171]), .wt172(wt[172]), .wt173(wt[173]), .wt174(wt[174]), .wt175(wt[175]), .wt176(wt[176]), .wt177(wt[177]), .wt178(wt[178]), .wt179(wt[179]), .wt180(wt[180]), .wt181(wt[181]), .wt182(wt[182]), .wt183(wt[183]), .wt184(wt[184]), .wt185(wt[185]), .wt186(wt[186]), .wt187(wt[187]), .wt188(wt[188]), .wt189(wt[189]), .wt190(wt[190]), .wt191(wt[191]), .wt192(wt[192]), .wt193(wt[193]), .wt194(wt[194]), .wt195(wt[195]), .wt196(wt[196]), .wt197(wt[197]), .wt198(wt[198]), .wt199(wt[199]), .wt200(wt[200]), .wt201(wt[201]), .wt202(wt[202]), .wt203(wt[203]), .wt204(wt[204]), .wt205(wt[205]), .wt206(wt[206]), .wt207(wt[207]), .wt208(wt[208]), .wt209(wt[209]), .wt210(wt[210]), .wt211(wt[211]), .wt212(wt[212]), .wt213(wt[213]), .wt214(wt[214]), .wt215(wt[215]), .wt216(wt[216]), .wt217(wt[217]), .wt218(wt[218]), .wt219(wt[219]), .wt220(wt[220]), .wt221(wt[221]), .wt222(wt[222]), .wt223(wt[223]), .wt224(wt[224]), .wt225(wt[225]), .wt226(wt[226]), .wt227(wt[227]), .wt228(wt[228]), .wt229(wt[229]), .wt230(wt[230]), .wt231(wt[231]), .wt232(wt[232]), .wt233(wt[233]), .wt234(wt[234]), .wt235(wt[235]), .wt236(wt[236]), .wt237(wt[237]), .wt238(wt[238]), .wt239(wt[239]), .wt240(wt[240]), .wt241(wt[241]), .wt242(wt[242]), .wt243(wt[243]), .wt244(wt[244]), .wt245(wt[245]), .wt246(wt[246]), .wt247(wt[247]), .wt248(wt[248]), .wt249(wt[249]), .wt250(wt[250]), .wt251(wt[251]), .wt252(wt[252]), .wt253(wt[253]), .wt254(wt[254]), .wt255(wt[255]), .wt256(wt[256]), .wt257(wt[257]), .wt258(wt[258]), .wt259(wt[259]), .wt260(wt[260]), .wt261(wt[261]), .wt262(wt[262]), .wt263(wt[263]), .wt264(wt[264]), .wt265(wt[265]), .wt266(wt[266]), .wt267(wt[267]), .wt268(wt[268]), .wt269(wt[269]), .wt270(wt[270]), .wt271(wt[271]), .wt272(wt[272]), .wt273(wt[273]), .wt274(wt[274]), .wt275(wt[275]), .wt276(wt[276]), .wt277(wt[277]), .wt278(wt[278]), .wt279(wt[279]), .wt280(wt[280]), .wt281(wt[281]), .wt282(wt[282]), .wt283(wt[283]), .wt284(wt[284]), .wt285(wt[285]), .wt286(wt[286]), .wt287(wt[287]),
+      .bias0(bias[0]), .bias1(bias[1]), .bias2(bias[2]), .bias3(bias[3]), .bias4(bias[4]), .bias5(bias[5]), .bias6(bias[6]), .bias7(bias[7]), .bias8(bias[8]), .bias9(bias[9]), .bias10(bias[10]), .bias11(bias[11]), .bias12(bias[12]), .bias13(bias[13]), .bias14(bias[14]), .bias15(bias[15]), .bias16(bias[16]), .bias17(bias[17]), .bias18(bias[18]), .bias19(bias[19]), .bias20(bias[20]), .bias21(bias[21]), .bias22(bias[22]), .bias23(bias[23]), .bias24(bias[24]), .bias25(bias[25]), .bias26(bias[26]), .bias27(bias[27]), .bias28(bias[28]), .bias29(bias[29]), .bias30(bias[30]), .bias31(bias[31]),
+      .result0(result[(col+26*row)]), .result1(result[(col+26*row)+676]), .result2(result[(col+26*row)+(676*2)]), .result3(result[(col+26*row)+(676*3)]), .result4(result[(col+26*row)+(676*4)]), .result5(result[(col+26*row)+(676*5)]), .result6(result[(col+26*row)+(676*6)]), .result7(result[(col+26*row)+(676*7)]), .result8(result[(col+26*row)+(676*8)]), .result9(result[(col+26*row)+(676*9)]), .result10(result[(col+26*row)+(676*10)]), .result11(result[(col+26*row)+(676*11)]), .result12(result[(col+26*row)+(676*12)]), .result13(result[(col+26*row)+(676*13)]), .result14(result[(col+26*row)+(676*14)]), .result15(result[(col+26*row)+(676*15)]), .result16(result[(col+26*row)+(676*16)]), .result17(result[(col+26*row)+(676*17)]), .result18(result[(col+26*row)+(676*18)]), .result19(result[(col+26*row)+(676*19)]), .result20(result[(col+26*row)+(676*20)]), .result21(result[(col+26*row)+(676*21)]), .result22(result[(col+26*row)+(676*22)]), .result23(result[(col+26*row)+(676*23)]), .result24(result[(col+26*row)+(676*24)]), .result25(result[(col+26*row)+(676*25)]), .result26(result[(col+26*row)+(676*26)]), .result27(result[(col+26*row)+(676*27)]), .result28(result[(col+26*row)+(676*28)]), .result29(result[(col+26*row)+(676*29)]), .result30(result[(col+26*row)+(676*30)]), .result31(result[(col+26*row)+(676*31)])
+      );
+        end 
+    end
+endgenerate
+
+
+endmodule

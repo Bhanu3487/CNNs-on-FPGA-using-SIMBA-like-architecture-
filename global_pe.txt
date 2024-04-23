@@ -1,0 +1,115 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 21.04.2024 18:17:08
+// Design Name: 
+// Module Name: global_pe
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module global_pe (
+    input clk,input we,
+    input rst,input pixel,
+    input [7:0] img1,   // Vector input A (9-bit) with 9 elements
+    input [7:0] img2,
+    input [7:0] img3,
+    input [7:0] img4,
+    input [7:0] img5,
+    input [7:0] img6,
+    input [7:0] img7,
+    input [7:0] img8,
+    input [7:0] img9,
+    input [7:0] wt0,input [7:0] wt1,input [7:0] wt2,input [7:0] wt3,input [7:0] wt4,input [7:0] wt5,input [7:0] wt6,input [7:0] wt7,input [7:0] wt8,input [7:0] wt9,input [7:0] wt10,input [7:0] wt11,input [7:0] wt12,input [7:0] wt13,input [7:0] wt14,input [7:0] wt15,input [7:0] wt16,input [7:0] wt17,input [7:0] wt18,input [7:0] wt19,input [7:0] wt20,input [7:0] wt21,input [7:0] wt22,input [7:0] wt23,input [7:0] wt24,input [7:0] wt25,input [7:0] wt26,input [7:0] wt27,input [7:0] wt28,input [7:0] wt29,input [7:0] wt30,input [7:0] wt31,input [7:0] wt32,input [7:0] wt33,input [7:0] wt34,input [7:0] wt35,input [7:0] wt36,input [7:0] wt37,input [7:0] wt38,input [7:0] wt39,input [7:0] wt40,input [7:0] wt41,input [7:0] wt42,input [7:0] wt43,input [7:0] wt44,input [7:0] wt45,input [7:0] wt46,input [7:0] wt47,input [7:0] wt48,input [7:0] wt49,input [7:0] wt50,input [7:0] wt51,input [7:0] wt52,input [7:0] wt53,input [7:0] wt54,input [7:0] wt55,input [7:0] wt56,input [7:0] wt57,input [7:0] wt58,input [7:0] wt59,input [7:0] wt60,input [7:0] wt61,input [7:0] wt62,input [7:0] wt63,input [7:0] wt64,input [7:0] wt65,input [7:0] wt66,input [7:0] wt67,input [7:0] wt68,input [7:0] wt69,input [7:0] wt70,input [7:0] wt71,input [7:0] wt72,input [7:0] wt73,input [7:0] wt74,input [7:0] wt75,input [7:0] wt76,input [7:0] wt77,input [7:0] wt78,input [7:0] wt79,input [7:0] wt80,input [7:0] wt81,input [7:0] wt82,input [7:0] wt83,input [7:0] wt84,input [7:0] wt85,input [7:0] wt86,input [7:0] wt87,input [7:0] wt88,input [7:0] wt89,input [7:0] wt90,input [7:0] wt91,input [7:0] wt92,input [7:0] wt93,input [7:0] wt94,input [7:0] wt95,input [7:0] wt96,input [7:0] wt97,input [7:0] wt98,input [7:0] wt99,input [7:0] wt100,input [7:0] wt101,input [7:0] wt102,input [7:0] wt103,input [7:0] wt104,input [7:0] wt105,input [7:0] wt106,input [7:0] wt107,input [7:0] wt108,input [7:0] wt109,input [7:0] wt110,input [7:0] wt111,input [7:0] wt112,input [7:0] wt113,input [7:0] wt114,input [7:0] wt115,input [7:0] wt116,input [7:0] wt117,input [7:0] wt118,input [7:0] wt119,input [7:0] wt120,input [7:0] wt121,input [7:0] wt122,input [7:0] wt123,input [7:0] wt124,input [7:0] wt125,input [7:0] wt126,input [7:0] wt127,input [7:0] wt128,input [7:0] wt129,input [7:0] wt130,input [7:0] wt131,input [7:0] wt132,input [7:0] wt133,input [7:0] wt134,input [7:0] wt135,input [7:0] wt136,input [7:0] wt137,input [7:0] wt138,input [7:0] wt139,input [7:0] wt140,input [7:0] wt141,input [7:0] wt142,input [7:0] wt143,input [7:0] wt144,input [7:0] wt145,input [7:0] wt146,input [7:0] wt147,input [7:0] wt148,input [7:0] wt149,input [7:0] wt150,input [7:0] wt151,input [7:0] wt152,input [7:0] wt153,input [7:0] wt154,input [7:0] wt155,input [7:0] wt156,input [7:0] wt157,input [7:0] wt158,input [7:0] wt159,input [7:0] wt160,input [7:0] wt161,input [7:0] wt162,input [7:0] wt163,input [7:0] wt164,input [7:0] wt165,input [7:0] wt166,input [7:0] wt167,input [7:0] wt168,input [7:0] wt169,input [7:0] wt170,input [7:0] wt171,input [7:0] wt172,input [7:0] wt173,input [7:0] wt174,input [7:0] wt175,input [7:0] wt176,input [7:0] wt177,input [7:0] wt178,input [7:0] wt179,input [7:0] wt180,input [7:0] wt181,input [7:0] wt182,input [7:0] wt183,input [7:0] wt184,input [7:0] wt185,input [7:0] wt186,input [7:0] wt187,input [7:0] wt188,input [7:0] wt189,input [7:0] wt190,input [7:0] wt191,input [7:0] wt192,input [7:0] wt193,input [7:0] wt194,input [7:0] wt195,input [7:0] wt196,input [7:0] wt197,input [7:0] wt198,input [7:0] wt199,input [7:0] wt200,input [7:0] wt201,input [7:0] wt202,input [7:0] wt203,input [7:0] wt204,input [7:0] wt205,input [7:0] wt206,input [7:0] wt207,input [7:0] wt208,input [7:0] wt209,input [7:0] wt210,input [7:0] wt211,input [7:0] wt212,input [7:0] wt213,input [7:0] wt214,input [7:0] wt215,input [7:0] wt216,input [7:0] wt217,input [7:0] wt218,input [7:0] wt219,input [7:0] wt220,input [7:0] wt221,input [7:0] wt222,input [7:0] wt223,input [7:0] wt224,input [7:0] wt225,input [7:0] wt226,input [7:0] wt227,input [7:0] wt228,input [7:0] wt229,input [7:0] wt230,input [7:0] wt231,input [7:0] wt232,input [7:0] wt233,input [7:0] wt234,input [7:0] wt235,input [7:0] wt236,input [7:0] wt237,input [7:0] wt238,input [7:0] wt239,input [7:0] wt240,input [7:0] wt241,input [7:0] wt242,input [7:0] wt243,input [7:0] wt244,input [7:0] wt245,input [7:0] wt246,input [7:0] wt247,input [7:0] wt248,input [7:0] wt249,input [7:0] wt250,input [7:0] wt251,input [7:0] wt252,input [7:0] wt253,input [7:0] wt254,input [7:0] wt255,input [7:0] wt256,input [7:0] wt257,input [7:0] wt258,input [7:0] wt259,input [7:0] wt260,input [7:0] wt261,input [7:0] wt262,input [7:0] wt263,input [7:0] wt264,input [7:0] wt265,input [7:0] wt266,input [7:0] wt267,input [7:0] wt268,input [7:0] wt269,input [7:0] wt270,input [7:0] wt271,input [7:0] wt272,input [7:0] wt273,input [7:0] wt274,input [7:0] wt275,input [7:0] wt276,input [7:0] wt277,input [7:0] wt278,input [7:0] wt279,input [7:0] wt280,input [7:0] wt281,input [7:0] wt282,input [7:0] wt283,input [7:0] wt284,input [7:0] wt285,input [7:0] wt286,input [7:0] wt287,
+    input [7:0] bias0,input [7:0] bias1,input [7:0] bias2,input [7:0] bias3,input [7:0] bias4,input [7:0] bias5,input [7:0] bias6,input [7:0] bias7,input [7:0] bias8,input [7:0] bias9,input [7:0] bias10,input [7:0] bias11,input [7:0] bias12,input [7:0] bias13,input [7:0] bias14,input [7:0] bias15,input [7:0] bias16,input [7:0] bias17,input [7:0] bias18,input [7:0] bias19,input [7:0] bias20,input [7:0] bias21,input [7:0] bias22,input [7:0] bias23,input [7:0] bias24,input [7:0] bias25,input [7:0] bias26,input [7:0] bias27,input [7:0] bias28,input [7:0] bias29,input [7:0] bias30,input [7:0] bias31,
+    output [7:0] result0,output [7:0] result1,output [7:0] result2,output [7:0] result3,output [7:0] result4,output [7:0] result5,output [7:0] result6,output [7:0] result7,output [7:0] result8,output [7:0] result9,output [7:0] result10,output [7:0] result11,output [7:0] result12,output [7:0] result13,output [7:0] result14,output [7:0] result15,output [7:0] result16,output [7:0] result17,output [7:0] result18,output [7:0] result19,output [7:0] result20,output [7:0] result21,output [7:0] result22,output [7:0] result23,output [7:0] result24,output [7:0] result25,output [7:0] result26,output [7:0] result27,output [7:0] result28,output [7:0] result29,output [7:0] result30,output [7:0] result31
+);
+
+wire [7:0]result[31:0];
+wire dout;
+wire din;
+
+
+genvar n;
+generate
+    for (n = 0; n < 4; n = n + 1) 
+begin : pe_instances
+        processing_element pe (
+            .clk(clk),
+            .rst(rst),
+            .j(n),
+           .img1(img1),   
+      .img2(img2),
+      .img3(img3),
+      .img4(img4),
+      .img5(img5),
+      .img6(img6),
+      .img7(img7),
+      .img8(img8),
+      .img9(img9),
+      .wt0(wt0), .wt1(wt1), .wt2(wt2), .wt3(wt3), .wt4(wt4), .wt5(wt5), .wt6(wt6), .wt7(wt7), .wt8(wt8), .wt9(wt9), .wt10(wt10), .wt11(wt11), .wt12(wt12), .wt13(wt13), .wt14(wt14), .wt15(wt15), .wt16(wt16), .wt17(wt17), .wt18(wt18), .wt19(wt19), .wt20(wt20), .wt21(wt21), .wt22(wt22), .wt23(wt23), .wt24(wt24), .wt25(wt25), .wt26(wt26), .wt27(wt27), .wt28(wt28), .wt29(wt29), .wt30(wt30), .wt31(wt31), .wt32(wt32), .wt33(wt33), .wt34(wt34), .wt35(wt35), .wt36(wt36), .wt37(wt37), .wt38(wt38), .wt39(wt39), .wt40(wt40), .wt41(wt41), .wt42(wt42), .wt43(wt43), .wt44(wt44), .wt45(wt45), .wt46(wt46), .wt47(wt47), .wt48(wt48), .wt49(wt49), .wt50(wt50), .wt51(wt51), .wt52(wt52), .wt53(wt53), .wt54(wt54), .wt55(wt55), .wt56(wt56), .wt57(wt57), .wt58(wt58), .wt59(wt59), .wt60(wt60), .wt61(wt61), .wt62(wt62), .wt63(wt63), .wt64(wt64), .wt65(wt65), .wt66(wt66), .wt67(wt67), .wt68(wt68), .wt69(wt69), .wt70(wt70), .wt71(wt71), .wt72(wt72), .wt73(wt73), .wt74(wt74), .wt75(wt75), .wt76(wt76), .wt77(wt77), .wt78(wt78), .wt79(wt79), .wt80(wt80), .wt81(wt81), .wt82(wt82), .wt83(wt83), .wt84(wt84), .wt85(wt85), .wt86(wt86), .wt87(wt87), .wt88(wt88), .wt89(wt89), .wt90(wt90), .wt91(wt91), .wt92(wt92), .wt93(wt93), .wt94(wt94), .wt95(wt95), .wt96(wt96), .wt97(wt97), .wt98(wt98), .wt99(wt99), .wt100(wt100), .wt101(wt101), .wt102(wt102), .wt103(wt103), .wt104(wt104), .wt105(wt105), .wt106(wt106), .wt107(wt107), .wt108(wt108), .wt109(wt109), .wt110(wt110), .wt111(wt111), .wt112(wt112), .wt113(wt113), .wt114(wt114), .wt115(wt115), .wt116(wt116), .wt117(wt117), .wt118(wt118), .wt119(wt119), .wt120(wt120), .wt121(wt121), .wt122(wt122), .wt123(wt123), .wt124(wt124), .wt125(wt125), .wt126(wt126), .wt127(wt127), .wt128(wt128), .wt129(wt129), .wt130(wt130), .wt131(wt131), .wt132(wt132), .wt133(wt133), .wt134(wt134), .wt135(wt135), .wt136(wt136), .wt137(wt137), .wt138(wt138), .wt139(wt139), .wt140(wt140), .wt141(wt141), .wt142(wt142), .wt143(wt143), .wt144(wt144), .wt145(wt145), .wt146(wt146), .wt147(wt147), .wt148(wt148), .wt149(wt149), .wt150(wt150), .wt151(wt151), .wt152(wt152), .wt153(wt153), .wt154(wt154), .wt155(wt155), .wt156(wt156), .wt157(wt157), .wt158(wt158), .wt159(wt159), .wt160(wt160), .wt161(wt161), .wt162(wt162), .wt163(wt163), .wt164(wt164), .wt165(wt165), .wt166(wt166), .wt167(wt167), .wt168(wt168), .wt169(wt169), .wt170(wt170), .wt171(wt171), .wt172(wt172), .wt173(wt173), .wt174(wt174), .wt175(wt175), .wt176(wt176), .wt177(wt177), .wt178(wt178), .wt179(wt179), .wt180(wt180), .wt181(wt181), .wt182(wt182), .wt183(wt183), .wt184(wt184), .wt185(wt185), .wt186(wt186), .wt187(wt187), .wt188(wt188), .wt189(wt189), .wt190(wt190), .wt191(wt191), .wt192(wt192), .wt193(wt193), .wt194(wt194), .wt195(wt195), .wt196(wt196), .wt197(wt197), .wt198(wt198), .wt199(wt199), .wt200(wt200), .wt201(wt201), .wt202(wt202), .wt203(wt203), .wt204(wt204), .wt205(wt205), .wt206(wt206), .wt207(wt207), .wt208(wt208), .wt209(wt209), .wt210(wt210), .wt211(wt211), .wt212(wt212), .wt213(wt213), .wt214(wt214), .wt215(wt215), .wt216(wt216), .wt217(wt217), .wt218(wt218), .wt219(wt219), .wt220(wt220), .wt221(wt221), .wt222(wt222), .wt223(wt223), .wt224(wt224), .wt225(wt225), .wt226(wt226), .wt227(wt227), .wt228(wt228), .wt229(wt229), .wt230(wt230), .wt231(wt231), .wt232(wt232), .wt233(wt233), .wt234(wt234), .wt235(wt235), .wt236(wt236), .wt237(wt237), .wt238(wt238), .wt239(wt239), .wt240(wt240), .wt241(wt241), .wt242(wt242), .wt243(wt243), .wt244(wt244), .wt245(wt245), .wt246(wt246), .wt247(wt247), .wt248(wt248), .wt249(wt249), .wt250(wt250), .wt251(wt251), .wt252(wt252), .wt253(wt253), .wt254(wt254), .wt255(wt255), .wt256(wt256), .wt257(wt257), .wt258(wt258), .wt259(wt259), .wt260(wt260), .wt261(wt261), .wt262(wt262), .wt263(wt263), .wt264(wt264), .wt265(wt265), .wt266(wt266), .wt267(wt267), .wt268(wt268), .wt269(wt269), .wt270(wt270), .wt271(wt271), .wt272(wt272), .wt273(wt273), .wt274(wt274), .wt275(wt275), .wt276(wt276), .wt277(wt277), .wt278(wt278), .wt279(wt279), .wt280(wt280), .wt281(wt281), .wt282(wt282), .wt283(wt283), .wt284(wt284), .wt285(wt285), .wt286(wt286), .wt287(wt287),
+      .bias0(bias0), .bias1(bias1), .bias2(bias2), .bias3(bias3), .bias4(bias4), .bias5(bias5), .bias6(bias6), .bias7(bias7), .bias8(bias8), .bias9(bias9), .bias10(bias10), .bias11(bias11), .bias12(bias12), .bias13(bias13), .bias14(bias14), .bias15(bias15), .bias16(bias16), .bias17(bias17), .bias18(bias18), .bias19(bias19), .bias20(bias20), .bias21(bias21), .bias22(bias22), .bias23(bias23), .bias24(bias24), .bias25(bias25), .bias26(bias26), .bias27(bias27), .bias28(bias28), .bias29(bias29), .bias30(bias30), .bias31(bias31),
+      .result0(result[n*8+0]), .result1(result[n*8+1]), .result2(result[n*8+2]), .result3(result[n*8+3]), .result4(result[n*8+4]), .result5(result[n*8+5]), .result6(result[n*8+6]), .result7(result[n*8+7]));
+end
+endgenerate
+
+assign result0 = result[0];
+ assign result1 = result[1];
+ assign result2 = result[2];
+ assign result3 = result[3];
+ assign result4 = result[4];
+ assign result5 = result[5];
+ assign result6 = result[6];
+ assign result7 = result[7];
+ assign result8 = result[8];
+ assign result9 = result[9];
+ assign result10 = result[10];
+ assign result11 = result[11];
+ assign result12 = result[12];
+ assign result13 = result[13];
+ assign result14 = result[14];
+ assign result15 = result[15];
+ assign result16 = result[16];
+ assign result17 = result[17];
+ assign result18 = result[18];
+ assign result19 = result[19];
+ assign result20 = result[20];
+ assign result21 = result[21];
+ assign result22 = result[22];
+ assign result23 = result[23];
+ assign result24 = result[24];
+ assign result25 = result[25];
+ assign result26 = result[26];
+ assign result27 = result[27];
+ assign result28 = result[28];
+ assign result29 = result[29];
+ assign result30 = result[30];
+ assign result31 = result[31];
+
+//genvar k;
+//generate
+//    for (k = 0; k < 32; k = k + 1) begin : write_inst
+//        design_1_wrapper pqr (
+//            .BRAM_PORTA_0_addr(1104+(676*k)+pixel),
+//            .BRAM_PORTA_0_clk(clk),
+//            .BRAM_PORTA_0_din(result[k]),
+//            .BRAM_PORTA_0_we(we)
+//        );
+//    end
+//endgenerate
+
+
+endmodule
+

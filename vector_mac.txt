@@ -1,0 +1,58 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 21.04.2024 01:15:31
+// Design Name: 
+// Module Name: vector_mac
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module vector_mac(
+    input  clk,
+    input rst,
+    input [7:0] img1,   // Vector input A (9-bit) with 9 elements
+    input [7:0] img2,
+    input [7:0] img3,
+    input [7:0] img4,
+    input [7:0] img5,
+    input [7:0] img6,
+    input [7:0] img7,
+    input [7:0] img8,
+    input [7:0] img9,
+    input [7:0] wt1,   
+    input [7:0] wt2,
+    input [7:0] wt3,
+    input [7:0] wt4,
+    input [7:0] wt5,
+    input [7:0] wt6,
+    input [7:0] wt7,
+    input [7:0] wt8,
+    input [7:0] wt9,
+    input [7:0] bias,
+       
+    output reg [7:0] result     
+);
+
+reg [15:0]result_slice;
+
+always @(posedge clk or posedge rst) begin
+    if (rst) 
+     result=0;
+     else begin
+     result_slice=bias+(img1*wt1)+(img2*wt2)+(img3*wt3)+(img4*wt4)+(img5*wt5)+(img6*wt6)+(img7*wt7)+(img8*wt8)+(img9*wt9);
+     result=result_slice[15:8];end
+end
+endmodule

@@ -1,0 +1,104 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 21.04.2024 01:16:18
+// Design Name: 
+// Module Name: vector_mac_tb
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module vector_mac_tb();
+
+    reg  clk;
+    reg rst;
+    reg [7:0] img1;   // Vector reg A (9-bit) with 9 elements
+    reg [7:0] img2;
+    reg [7:0] img3;
+    reg [7:0] img4;
+    reg [7:0] img5;
+    reg [7:0] img6;
+    reg [7:0] img7;
+    reg [7:0] img8;
+    reg [7:0] img9;
+    reg [7:0] wt1;   
+    reg [7:0] wt2;
+    reg [7:0] wt3;
+    reg [7:0] wt4;
+    reg [7:0] wt5;
+    reg [7:0] wt6;
+    reg [7:0] wt7;
+    reg [7:0] wt8;
+    reg [7:0] wt9;
+    reg [7:0] bias;
+    wire [7:0] result;
+
+vector_mac uut(
+      .clk(clk),
+     .rst(rst),
+      .img1(img1),   // Vector  A (9-bit) with 9 elements
+      .img2(img2),
+      .img3(img3),
+      .img4(img4),
+      .img5(img5),
+      .img6(img6),
+      .img7(img7),
+      .img8(img8),
+      .img9(img9),
+      .wt1(wt1),   
+      .wt2(wt2),
+      .wt3(wt3),
+      .wt4(wt4),
+      .wt5(wt5),
+      .wt6(wt6),
+      .wt7(wt7),
+      .wt8(wt8),
+      .wt9(wt9),
+      .bias(bias), .result(result));  
+initial 
+ begin
+    clk = 0;
+  forever #5 clk = ~clk;
+  end
+  
+initial
+begin
+rst=1;
+#10;
+rst=0;
+img1=8'd10;
+img2=8'd20;
+img3=8'd30;
+img4=8'd40;
+img5=8'd10;
+img6=8'd20;
+img7=8'd30;
+img8=8'd40;
+img9=8'd00;
+wt1=8'd1;
+wt2=8'd2;
+wt3=8'd3;
+wt4=8'd4;
+wt5=8'd1;
+wt6=8'd2;
+wt7=8'd3;
+wt8=8'd4;
+wt9=8'd0;
+bias=8'd0;
+#10
+#10
+$finish;
+end
+endmodule

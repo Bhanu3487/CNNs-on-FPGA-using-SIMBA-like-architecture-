@@ -1,0 +1,384 @@
+`timescale 1ns / 1ps
+
+
+module processing_element (
+    input clk,
+    input rst, input j,
+    input [7:0] img1,   // Vector input A (9-bit) with 9 elements
+    input [7:0] img2,
+    input [7:0] img3,
+    input [7:0] img4,
+    input [7:0] img5,
+    input [7:0] img6,
+    input [7:0] img7,
+    input [7:0] img8,
+    input [7:0] img9,
+    input [7:0] wt0,input [7:0] wt1,input [7:0] wt2,input [7:0] wt3,input [7:0] wt4,input [7:0] wt5,input [7:0] wt6,input [7:0] wt7,input [7:0] wt8,input [7:0] wt9,input [7:0] wt10,input [7:0] wt11,input [7:0] wt12,input [7:0] wt13,input [7:0] wt14,input [7:0] wt15,input [7:0] wt16,input [7:0] wt17,input [7:0] wt18,input [7:0] wt19,input [7:0] wt20,input [7:0] wt21,input [7:0] wt22,input [7:0] wt23,input [7:0] wt24,input [7:0] wt25,input [7:0] wt26,input [7:0] wt27,input [7:0] wt28,input [7:0] wt29,input [7:0] wt30,input [7:0] wt31,input [7:0] wt32,input [7:0] wt33,input [7:0] wt34,input [7:0] wt35,input [7:0] wt36,input [7:0] wt37,input [7:0] wt38,input [7:0] wt39,input [7:0] wt40,input [7:0] wt41,input [7:0] wt42,input [7:0] wt43,input [7:0] wt44,input [7:0] wt45,input [7:0] wt46,input [7:0] wt47,input [7:0] wt48,input [7:0] wt49,input [7:0] wt50,input [7:0] wt51,input [7:0] wt52,input [7:0] wt53,input [7:0] wt54,input [7:0] wt55,input [7:0] wt56,input [7:0] wt57,input [7:0] wt58,input [7:0] wt59,input [7:0] wt60,input [7:0] wt61,input [7:0] wt62,input [7:0] wt63,input [7:0] wt64,input [7:0] wt65,input [7:0] wt66,input [7:0] wt67,input [7:0] wt68,input [7:0] wt69,input [7:0] wt70,input [7:0] wt71,input [7:0] wt72,input [7:0] wt73,input [7:0] wt74,input [7:0] wt75,input [7:0] wt76,input [7:0] wt77,input [7:0] wt78,input [7:0] wt79,input [7:0] wt80,input [7:0] wt81,input [7:0] wt82,input [7:0] wt83,input [7:0] wt84,input [7:0] wt85,input [7:0] wt86,input [7:0] wt87,input [7:0] wt88,input [7:0] wt89,input [7:0] wt90,input [7:0] wt91,input [7:0] wt92,input [7:0] wt93,input [7:0] wt94,input [7:0] wt95,input [7:0] wt96,input [7:0] wt97,input [7:0] wt98,input [7:0] wt99,input [7:0] wt100,input [7:0] wt101,input [7:0] wt102,input [7:0] wt103,input [7:0] wt104,input [7:0] wt105,input [7:0] wt106,input [7:0] wt107,input [7:0] wt108,input [7:0] wt109,input [7:0] wt110,input [7:0] wt111,input [7:0] wt112,input [7:0] wt113,input [7:0] wt114,input [7:0] wt115,input [7:0] wt116,input [7:0] wt117,input [7:0] wt118,input [7:0] wt119,input [7:0] wt120,input [7:0] wt121,input [7:0] wt122,input [7:0] wt123,input [7:0] wt124,input [7:0] wt125,input [7:0] wt126,input [7:0] wt127,input [7:0] wt128,input [7:0] wt129,input [7:0] wt130,input [7:0] wt131,input [7:0] wt132,input [7:0] wt133,input [7:0] wt134,input [7:0] wt135,input [7:0] wt136,input [7:0] wt137,input [7:0] wt138,input [7:0] wt139,input [7:0] wt140,input [7:0] wt141,input [7:0] wt142,input [7:0] wt143,input [7:0] wt144,input [7:0] wt145,input [7:0] wt146,input [7:0] wt147,input [7:0] wt148,input [7:0] wt149,input [7:0] wt150,input [7:0] wt151,input [7:0] wt152,input [7:0] wt153,input [7:0] wt154,input [7:0] wt155,input [7:0] wt156,input [7:0] wt157,input [7:0] wt158,input [7:0] wt159,input [7:0] wt160,input [7:0] wt161,input [7:0] wt162,input [7:0] wt163,input [7:0] wt164,input [7:0] wt165,input [7:0] wt166,input [7:0] wt167,input [7:0] wt168,input [7:0] wt169,input [7:0] wt170,input [7:0] wt171,input [7:0] wt172,input [7:0] wt173,input [7:0] wt174,input [7:0] wt175,input [7:0] wt176,input [7:0] wt177,input [7:0] wt178,input [7:0] wt179,input [7:0] wt180,input [7:0] wt181,input [7:0] wt182,input [7:0] wt183,input [7:0] wt184,input [7:0] wt185,input [7:0] wt186,input [7:0] wt187,input [7:0] wt188,input [7:0] wt189,input [7:0] wt190,input [7:0] wt191,input [7:0] wt192,input [7:0] wt193,input [7:0] wt194,input [7:0] wt195,input [7:0] wt196,input [7:0] wt197,input [7:0] wt198,input [7:0] wt199,input [7:0] wt200,input [7:0] wt201,input [7:0] wt202,input [7:0] wt203,input [7:0] wt204,input [7:0] wt205,input [7:0] wt206,input [7:0] wt207,input [7:0] wt208,input [7:0] wt209,input [7:0] wt210,input [7:0] wt211,input [7:0] wt212,input [7:0] wt213,input [7:0] wt214,input [7:0] wt215,input [7:0] wt216,input [7:0] wt217,input [7:0] wt218,input [7:0] wt219,input [7:0] wt220,input [7:0] wt221,input [7:0] wt222,input [7:0] wt223,input [7:0] wt224,input [7:0] wt225,input [7:0] wt226,input [7:0] wt227,input [7:0] wt228,input [7:0] wt229,input [7:0] wt230,input [7:0] wt231,input [7:0] wt232,input [7:0] wt233,input [7:0] wt234,input [7:0] wt235,input [7:0] wt236,input [7:0] wt237,input [7:0] wt238,input [7:0] wt239,input [7:0] wt240,input [7:0] wt241,input [7:0] wt242,input [7:0] wt243,input [7:0] wt244,input [7:0] wt245,input [7:0] wt246,input [7:0] wt247,input [7:0] wt248,input [7:0] wt249,input [7:0] wt250,input [7:0] wt251,input [7:0] wt252,input [7:0] wt253,input [7:0] wt254,input [7:0] wt255,input [7:0] wt256,input [7:0] wt257,input [7:0] wt258,input [7:0] wt259,input [7:0] wt260,input [7:0] wt261,input [7:0] wt262,input [7:0] wt263,input [7:0] wt264,input [7:0] wt265,input [7:0] wt266,input [7:0] wt267,input [7:0] wt268,input [7:0] wt269,input [7:0] wt270,input [7:0] wt271,input [7:0] wt272,input [7:0] wt273,input [7:0] wt274,input [7:0] wt275,input [7:0] wt276,input [7:0] wt277,input [7:0] wt278,input [7:0] wt279,input [7:0] wt280,input [7:0] wt281,input [7:0] wt282,input [7:0] wt283,input [7:0] wt284,input [7:0] wt285,input [7:0] wt286,input [7:0] wt287,
+    input [7:0] bias0,input [7:0] bias1,input [7:0] bias2,input [7:0] bias3,input [7:0] bias4,input [7:0] bias5,input [7:0] bias6,input [7:0] bias7,input [7:0] bias8,input [7:0] bias9,input [7:0] bias10,input [7:0] bias11,input [7:0] bias12,input [7:0] bias13,input [7:0] bias14,input [7:0] bias15,input [7:0] bias16,input [7:0] bias17,input [7:0] bias18,input [7:0] bias19,input [7:0] bias20,input [7:0] bias21,input [7:0] bias22,input [7:0] bias23,input [7:0] bias24,input [7:0] bias25,input [7:0] bias26,input [7:0] bias27,input [7:0] bias28,input [7:0] bias29,input [7:0] bias30,input [7:0] bias31,
+   output wire [7:0] result0, output wire [7:0] result1, output wire [7:0] result2, output wire [7:0] result3, output wire [7:0] result4, output wire [7:0] result5, output wire [7:0] result6, output wire [7:0] result7
+);
+parameter start_addr=320;
+
+
+wire [7:0]wt[287:0];
+assign wt[0] = wt0;
+ assign wt[1] = wt1;
+ assign wt[2] = wt2;
+ assign wt[3] = wt3;
+ assign wt[4] = wt4;
+ assign wt[5] = wt5;
+ assign wt[6] = wt6;
+ assign wt[7] = wt7;
+ assign wt[8] = wt8;
+ assign wt[9] = wt9;
+ assign wt[10] = wt10;
+ assign wt[11] = wt11;
+ assign wt[12] = wt12;
+ assign wt[13] = wt13;
+ assign wt[14] = wt14;
+ assign wt[15] = wt15;
+ assign wt[16] = wt16;
+ assign wt[17] = wt17;
+ assign wt[18] = wt18;
+ assign wt[19] = wt19;
+ assign wt[20] = wt20;
+ assign wt[21] = wt21;
+ assign wt[22] = wt22;
+ assign wt[23] = wt23;
+ assign wt[24] = wt24;
+ assign wt[25] = wt25;
+ assign wt[26] = wt26;
+ assign wt[27] = wt27;
+ assign wt[28] = wt28;
+ assign wt[29] = wt29;
+ assign wt[30] = wt30;
+ assign wt[31] = wt31;
+ assign wt[32] = wt32;
+ assign wt[33] = wt33;
+ assign wt[34] = wt34;
+ assign wt[35] = wt35;
+ assign wt[36] = wt36;
+ assign wt[37] = wt37;
+ assign wt[38] = wt38;
+ assign wt[39] = wt39;
+ assign wt[40] = wt40;
+ assign wt[41] = wt41;
+ assign wt[42] = wt42;
+ assign wt[43] = wt43;
+ assign wt[44] = wt44;
+ assign wt[45] = wt45;
+ assign wt[46] = wt46;
+ assign wt[47] = wt47;
+ assign wt[48] = wt48;
+ assign wt[49] = wt49;
+ assign wt[50] = wt50;
+ assign wt[51] = wt51;
+ assign wt[52] = wt52;
+ assign wt[53] = wt53;
+ assign wt[54] = wt54;
+ assign wt[55] = wt55;
+ assign wt[56] = wt56;
+ assign wt[57] = wt57;
+ assign wt[58] = wt58;
+ assign wt[59] = wt59;
+ assign wt[60] = wt60;
+ assign wt[61] = wt61;
+ assign wt[62] = wt62;
+ assign wt[63] = wt63;
+ assign wt[64] = wt64;
+ assign wt[65] = wt65;
+ assign wt[66] = wt66;
+ assign wt[67] = wt67;
+ assign wt[68] = wt68;
+ assign wt[69] = wt69;
+ assign wt[70] = wt70;
+ assign wt[71] = wt71;
+ assign wt[72] = wt72;
+ assign wt[73] = wt73;
+ assign wt[74] = wt74;
+ assign wt[75] = wt75;
+ assign wt[76] = wt76;
+ assign wt[77] = wt77;
+ assign wt[78] = wt78;
+ assign wt[79] = wt79;
+ assign wt[80] = wt80;
+ assign wt[81] = wt81;
+ assign wt[82] = wt82;
+ assign wt[83] = wt83;
+ assign wt[84] = wt84;
+ assign wt[85] = wt85;
+ assign wt[86] = wt86;
+ assign wt[87] = wt87;
+ assign wt[88] = wt88;
+ assign wt[89] = wt89;
+ assign wt[90] = wt90;
+ assign wt[91] = wt91;
+ assign wt[92] = wt92;
+ assign wt[93] = wt93;
+ assign wt[94] = wt94;
+ assign wt[95] = wt95;
+ assign wt[96] = wt96;
+ assign wt[97] = wt97;
+ assign wt[98] = wt98;
+ assign wt[99] = wt99;
+ assign wt[100] = wt100;
+ assign wt[101] = wt101;
+ assign wt[102] = wt102;
+ assign wt[103] = wt103;
+ assign wt[104] = wt104;
+ assign wt[105] = wt105;
+ assign wt[106] = wt106;
+ assign wt[107] = wt107;
+ assign wt[108] = wt108;
+ assign wt[109] = wt109;
+ assign wt[110] = wt110;
+ assign wt[111] = wt111;
+ assign wt[112] = wt112;
+ assign wt[113] = wt113;
+ assign wt[114] = wt114;
+ assign wt[115] = wt115;
+ assign wt[116] = wt116;
+ assign wt[117] = wt117;
+ assign wt[118] = wt118;
+ assign wt[119] = wt119;
+ assign wt[120] = wt120;
+ assign wt[121] = wt121;
+ assign wt[122] = wt122;
+ assign wt[123] = wt123;
+ assign wt[124] = wt124;
+ assign wt[125] = wt125;
+ assign wt[126] = wt126;
+ assign wt[127] = wt127;
+ assign wt[128] = wt128;
+ assign wt[129] = wt129;
+ assign wt[130] = wt130;
+ assign wt[131] = wt131;
+ assign wt[132] = wt132;
+ assign wt[133] = wt133;
+ assign wt[134] = wt134;
+ assign wt[135] = wt135;
+ assign wt[136] = wt136;
+ assign wt[137] = wt137;
+ assign wt[138] = wt138;
+ assign wt[139] = wt139;
+ assign wt[140] = wt140;
+ assign wt[141] = wt141;
+ assign wt[142] = wt142;
+ assign wt[143] = wt143;
+ assign wt[144] = wt144;
+ assign wt[145] = wt145;
+ assign wt[146] = wt146;
+ assign wt[147] = wt147;
+ assign wt[148] = wt148;
+ assign wt[149] = wt149;
+ assign wt[150] = wt150;
+ assign wt[151] = wt151;
+ assign wt[152] = wt152;
+ assign wt[153] = wt153;
+ assign wt[154] = wt154;
+ assign wt[155] = wt155;
+ assign wt[156] = wt156;
+ assign wt[157] = wt157;
+ assign wt[158] = wt158;
+ assign wt[159] = wt159;
+ assign wt[160] = wt160;
+ assign wt[161] = wt161;
+ assign wt[162] = wt162;
+ assign wt[163] = wt163;
+ assign wt[164] = wt164;
+ assign wt[165] = wt165;
+ assign wt[166] = wt166;
+ assign wt[167] = wt167;
+ assign wt[168] = wt168;
+ assign wt[169] = wt169;
+ assign wt[170] = wt170;
+ assign wt[171] = wt171;
+ assign wt[172] = wt172;
+ assign wt[173] = wt173;
+ assign wt[174] = wt174;
+ assign wt[175] = wt175;
+ assign wt[176] = wt176;
+ assign wt[177] = wt177;
+ assign wt[178] = wt178;
+ assign wt[179] = wt179;
+ assign wt[180] = wt180;
+ assign wt[181] = wt181;
+ assign wt[182] = wt182;
+ assign wt[183] = wt183;
+ assign wt[184] = wt184;
+ assign wt[185] = wt185;
+ assign wt[186] = wt186;
+ assign wt[187] = wt187;
+ assign wt[188] = wt188;
+ assign wt[189] = wt189;
+ assign wt[190] = wt190;
+ assign wt[191] = wt191;
+ assign wt[192] = wt192;
+ assign wt[193] = wt193;
+ assign wt[194] = wt194;
+ assign wt[195] = wt195;
+ assign wt[196] = wt196;
+ assign wt[197] = wt197;
+ assign wt[198] = wt198;
+ assign wt[199] = wt199;
+ assign wt[200] = wt200;
+ assign wt[201] = wt201;
+ assign wt[202] = wt202;
+ assign wt[203] = wt203;
+ assign wt[204] = wt204;
+ assign wt[205] = wt205;
+ assign wt[206] = wt206;
+ assign wt[207] = wt207;
+ assign wt[208] = wt208;
+ assign wt[209] = wt209;
+ assign wt[210] = wt210;
+ assign wt[211] = wt211;
+ assign wt[212] = wt212;
+ assign wt[213] = wt213;
+ assign wt[214] = wt214;
+ assign wt[215] = wt215;
+ assign wt[216] = wt216;
+ assign wt[217] = wt217;
+ assign wt[218] = wt218;
+ assign wt[219] = wt219;
+ assign wt[220] = wt220;
+ assign wt[221] = wt221;
+ assign wt[222] = wt222;
+ assign wt[223] = wt223;
+ assign wt[224] = wt224;
+ assign wt[225] = wt225;
+ assign wt[226] = wt226;
+ assign wt[227] = wt227;
+ assign wt[228] = wt228;
+ assign wt[229] = wt229;
+ assign wt[230] = wt230;
+ assign wt[231] = wt231;
+ assign wt[232] = wt232;
+ assign wt[233] = wt233;
+ assign wt[234] = wt234;
+ assign wt[235] = wt235;
+ assign wt[236] = wt236;
+ assign wt[237] = wt237;
+ assign wt[238] = wt238;
+ assign wt[239] = wt239;
+ assign wt[240] = wt240;
+ assign wt[241] = wt241;
+ assign wt[242] = wt242;
+ assign wt[243] = wt243;
+ assign wt[244] = wt244;
+ assign wt[245] = wt245;
+ assign wt[246] = wt246;
+ assign wt[247] = wt247;
+ assign wt[248] = wt248;
+ assign wt[249] = wt249;
+ assign wt[250] = wt250;
+ assign wt[251] = wt251;
+ assign wt[252] = wt252;
+ assign wt[253] = wt253;
+ assign wt[254] = wt254;
+ assign wt[255] = wt255;
+ assign wt[256] = wt256;
+ assign wt[257] = wt257;
+ assign wt[258] = wt258;
+ assign wt[259] = wt259;
+ assign wt[260] = wt260;
+ assign wt[261] = wt261;
+ assign wt[262] = wt262;
+ assign wt[263] = wt263;
+ assign wt[264] = wt264;
+ assign wt[265] = wt265;
+ assign wt[266] = wt266;
+ assign wt[267] = wt267;
+ assign wt[268] = wt268;
+ assign wt[269] = wt269;
+ assign wt[270] = wt270;
+ assign wt[271] = wt271;
+ assign wt[272] = wt272;
+ assign wt[273] = wt273;
+ assign wt[274] = wt274;
+ assign wt[275] = wt275;
+ assign wt[276] = wt276;
+ assign wt[277] = wt277;
+ assign wt[278] = wt278;
+ assign wt[279] = wt279;
+ assign wt[280] = wt280;
+ assign wt[281] = wt281;
+ assign wt[282] = wt282;
+ assign wt[283] = wt283;
+ assign wt[284] = wt284;
+ assign wt[285] = wt285;
+ assign wt[286] = wt286;
+ assign wt[287] = wt287;
+
+wire [7:0]bias[31:0];
+assign bias[0] = bias0;
+ assign bias[1] = bias1;
+ assign bias[2] = bias2;
+ assign bias[3] = bias3;
+ assign bias[4] = bias4;
+ assign bias[5] = bias5;
+ assign bias[6] = bias6;
+ assign bias[7] = bias7;
+ assign bias[8] = bias8;
+ assign bias[9] = bias9;
+ assign bias[10] = bias10;
+ assign bias[11] = bias11;
+ assign bias[12] = bias12;
+ assign bias[13] = bias13;
+ assign bias[14] = bias14;
+ assign bias[15] = bias15;
+ assign bias[16] = bias16;
+ assign bias[17] = bias17;
+ assign bias[18] = bias18;
+ assign bias[19] = bias19;
+ assign bias[20] = bias20;
+ assign bias[21] = bias21;
+ assign bias[22] = bias22;
+ assign bias[23] = bias23;
+ assign bias[24] = bias24;
+ assign bias[25] = bias25;
+ assign bias[26] = bias26;
+ assign bias[27] = bias27;
+ assign bias[28] = bias28;
+ assign bias[29] = bias29;
+ assign bias[30] = bias30;
+ assign bias[31] = bias31;
+ 
+wire [7:0]result[7:0];
+
+genvar i;
+generate
+    for (i = 0; i < 8; i = i + 1)
+     begin : mac_instances
+        vector_mac mac_instance (
+            .clk(clk),.rst(rst),
+            .img1(img1),   
+      .img2(img2),
+      .img3(img3),
+      .img4(img4),
+      .img5(img5),
+      .img6(img6),
+      .img7(img7),
+      .img8(img8),
+      .img9(img9),
+            .wt1(wt[72*j+i*9+0]),.wt2(wt[72*j+i*9+1]),.wt3(wt[72*j+i*9+2]),.wt4(wt[72*j+i*9+3]),.wt5(wt[72*j+i*9+4]),
+            .wt6(wt[72*j+i*9+5]),.wt7(wt[72*j+i*9+6]),.wt8(wt[72*j+i*9+7]),.wt9(wt[72*j+i*9+8]),
+            .bias(bias[j*8+i]),.result(result[i])
+        );
+    end
+endgenerate
+
+assign result0 = result[0];
+ assign result1 = result[1];
+ assign result2 = result[2];
+ assign result3 = result[3];
+ assign result4 = result[4];
+ assign result5 = result[5];
+ assign result6 = result[6];
+ assign result7 = result[7];
+ 
+endmodule
+
+
+
+
