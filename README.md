@@ -13,9 +13,9 @@ We utilized the MNIST handwritten digits dataset and a pre-trained model contain
 
 ### Prediction Process
 
-1. **Convolution Operation**: We loaded the convolution weights and biases onto the FPGA through a .coe file and performed convolution on the input image (28x28 pixels). This function is done on the fpga. The rest is done in python.
+1. **Convolution Operation**: We loaded the convolution weights and biases onto the FPGA through a .coe file and performed convolution on the input image (28x28 pixels). This function is done on the fpga. The rest is done in python.  
 
-   The Simba architechture is implemented in the following heirarchical order from top to bottom: 
+   The Simba architechture is implemented in the following heirarchical order from top to bottom:   
   a) The top module collects all the pixels from 28x28 image and passes it to the global_pe module  
   b) The global_pe calls four processing elements  
   c) Each processing elements implements 8 vector mac units parallely  
