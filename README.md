@@ -1,7 +1,5 @@
 # CNNs-on-FPGA-using-SIMBA-like-architecture-
-Certainly! Here's the formatted version for your README.md file:
 
----
 
 ## Project Overview
 
